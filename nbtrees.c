@@ -304,6 +304,43 @@ void print_tree_fa(isi_tree R) {
     }
 }
 
+void print_tree_detailed(isi_tree R) {
+    if (is_empty_tree(R)) {
+        printf("Tree kosong\n");
+        return;
+    }
+
+    printf("\nSeluruh Node pada Non Binary Tree:\n\n");
+    int i;
+    for (i = 1; i <= jml_maks; i++) {
+        if (R[i].info != node_default) {
+            int j, parent = 0;
+            for (j = 0; j <= jml_maks; j++) {
+                if (R[j].ps_fs == i) {
+                    parent = j;
+                    break;
+                }
+                address sibling = R[j].ps_fs;
+                while (sibling != Nil) {
+                    if (R[sibling].ps_nb == i) {
+                        parent = j;
+                        break;
+                    }
+                    sibling = R[sibling].ps_nb;
+                }
+            }
+
+            printf("--> Indeks ke-%d\n", i);
+            printf("-------------------------------------\n");
+            printf("info array ke %d           : %c\n", i, R[i].info);
+            printf("first son array ke %d      : %d\n", i, R[i].ps_fs);
+            printf("next brother array ke %d   : %d\n", i, R[i].ps_nb);
+            printf("parent array ke %d         : %d\n", i, parent);
+            printf("-------------------------------------\n\n");
+        }
+    }
+}
+
 boolean search(isi_tree R, infotype X) {
     int i;
     

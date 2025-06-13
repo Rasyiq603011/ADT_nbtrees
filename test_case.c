@@ -7,6 +7,9 @@ void run_test_case(){
     test_create_tree();
     test_insert_node();
     test_simple_tree();
+    
+    printf("Tekan apapun untuk keluar...");
+    getch();
 }
 
 // Fungsi untuk mencetak header test
